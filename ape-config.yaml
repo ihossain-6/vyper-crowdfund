@@ -1,1 +1,9 @@
 name: Crowdfund
+contracts_folder: contracts
+deployments:
+  ethereum:
+    goerli:
+      - contract_type: Crowdfund
+        address: ""
+default_ecosystem: ethereum
+"""
