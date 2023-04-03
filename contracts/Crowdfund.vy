@@ -25,15 +25,20 @@ def withdraw():
 
 @external 
 @view 
-def getOwner() -> address:
+def get_owner() -> address:
     return self.owner
 
 @external 
 @view
-def getAmount() -> uint256:
+def get_amount() -> uint256:
     return self.amountRaised
 
 @external
 @view
-def getDeadline() -> uint256:
+def get_deadline() -> uint256:
     return self.deadline
+
+@external
+@view 
+def get_funders(funder: address) -> uint256:
+    return funders[address]
