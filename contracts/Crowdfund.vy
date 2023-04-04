@@ -41,4 +41,4 @@ def get_deadline() -> uint256:
 @external
 @view 
 def get_funders(funder: address) -> uint256:
-    return funders[address]
+    return self.funders[funder]
