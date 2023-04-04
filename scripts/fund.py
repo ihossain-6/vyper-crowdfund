@@ -12,7 +12,7 @@ def fund():
     
     print("Funded......")
     
-    balance = crowdfund.getAmount()
+    balance = crowdfund.get_amount()
     
     print(f"The balance of the contract is {balance}")
     
