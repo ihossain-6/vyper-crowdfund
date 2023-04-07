@@ -5,6 +5,10 @@ owner: address
 deadline: uint256
 amountRaised: uint256
 
+event Funded:
+    funder: indexed(address)
+    value: uint256
+
 @external
 def __init__(_owner: address, _deadline: uint256):
     self.owner = _owner
@@ -16,6 +20,7 @@ def fund():
     assert block.timestamp < self.deadline, "Deadline crossed"
     self.funders[msg.sender] += msg.value
     self.amountRaised += msg.value
+    log Funded(msg.sender, msg.value)
 
 @external 
 def withdraw():
