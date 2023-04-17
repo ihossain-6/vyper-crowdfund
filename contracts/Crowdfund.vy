@@ -4,6 +4,7 @@ funders: HashMap[address, uint256]
 owner: address
 deadline: uint256
 amountRaised: uint256
+amountLeft: uint256
 
 event Funded:
     funder: indexed(address)
@@ -20,12 +21,14 @@ def fund():
     assert block.timestamp < self.deadline, "Deadline crossed"
     self.funders[msg.sender] += msg.value
     self.amountRaised += msg.value
+    self.amountLeft += msg.value
     log Funded(msg.sender, msg.value)
 
 @external 
 def withdraw():
     assert msg.sender == self.owner, "You are not the owner"
-    assert self.amountRaised > 0, "Not enough money to withdraw"
+    assert self.amountLeft > 0, "Not enough money to withdraw"
+    self.amountLeft = 0
     send(msg.sender, self.balance)
 
 @external 
